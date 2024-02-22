@@ -1,8 +1,9 @@
 // index.js
+require("dotenv").config();
 const express = require("express");
 const ConnectToMongo = require("./db");
 const app = express();
-const port = 3000;
+const port = 5000;
 
 app.use(express.json());
 // available routes
