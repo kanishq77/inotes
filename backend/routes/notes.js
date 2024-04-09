@@ -89,7 +89,7 @@ router.patch("/updatenotes/:id", fetchuser, async (req, res) => {
 		);
 		res.json({ note });
 	} catch (error) {
-		console.error("Error creating user:", error.message);
+		console.error("Error updating notes:", error.message);
 		res.status(500).send("Some internal error");
 	}
 });

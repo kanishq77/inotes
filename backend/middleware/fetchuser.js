@@ -1,5 +1,5 @@
 const jwt = require("jsonwebtoken");
-
+const JWT_SECRET = "I'm kanishq";
 const fetchuser = (req, res, next) => {
 	const token = req.header("auth-token");
 	if (!token) {
@@ -9,7 +9,7 @@ const fetchuser = (req, res, next) => {
 	}
 
 	try {
-		const data = jwt.verify(token, process.env.JWT_SECRET);
+		const data = jwt.verify(token, JWT_SECRET);
 		req.user = data.user;
 
 		next();
