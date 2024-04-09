@@ -14,15 +14,15 @@ const Notestate = (props) => {
 				method: "GET", // *GET, POST, PUT, DELETE, etc.
 				headers: {
 					"Content-Type": "application/json",
-					"auth-token":
-						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjVlOWE3NTA1NjY2NmU3ODRlMGRkNTg4In0sImlhdCI6MTcwOTgxMTY5MX0.wBE1vJKUR95bPa7vu_RNH5yNY4JwbdimIyqgL2o3IRg",
+					"auth-token": localStorage.getItem("token"),
 				},
 			});
 			const json = await response.json();
-			console.log(json);
+			// eslint-disable-next-line
+			// console.log(json);
 			setNotes(json);
 		} catch (error) {
-			console.error("Error deleting note:", error);
+			console.error("Error fetching note:", error);
 		}
 	};
 	//Add a note
@@ -34,13 +34,13 @@ const Notestate = (props) => {
 				method: "POST", // *GET, POST, PUT, DELETE, etc.
 				headers: {
 					"Content-Type": "application/json",
-					"auth-token":
-						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjVlOWE3NTA1NjY2NmU3ODRlMGRkNTg4In0sImlhdCI6MTcwOTgxMTY5MX0.wBE1vJKUR95bPa7vu_RNH5yNY4JwbdimIyqgL2o3IRg",
+					"auth-token": localStorage.getItem("token"),
 				},
 				body: JSON.stringify({ title, description, tag }),
 			});
 			const note = await response.json();
-			console.log(note);
+			// eslint-disable-next-line
+			// console.log(note);
 			setNotes(notes.concat(note));
 		} catch (error) {
 			console.error("Error deleting note:", error);
@@ -49,7 +49,7 @@ const Notestate = (props) => {
 	//Delete a note
 	const deleteNote = async (_id) => {
 		try {
-			console.log("deleting the note with id " + _id);
+			// console.log("deleting the note with id " + _id);
 			const newNotes = notes.filter((note) => {
 				return note._id !== _id;
 			});
@@ -58,8 +58,7 @@ const Notestate = (props) => {
 				method: "DELETE", // *GET, POST, PUT, DELETE, etc.
 				headers: {
 					"Content-Type": "application/json",
-					"auth-token":
-						"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyIjp7ImlkIjoiNjVlOWE3NTA1NjY2NmU3ODRlMGRkNTg4In0sImlhdCI6MTcwOTgxMTY5MX0.wBE1vJKUR95bPa7vu_RNH5yNY4JwbdimIyqgL2o3IRg",
+					"auth-token": localStorage.getItem("token"),
 				},
 			});
 		} catch (error) {
@@ -69,24 +68,22 @@ const Notestate = (props) => {
 
 	//Edit a note
 	const editNote = async (_id, title, description, tag) => {
+		let response;
 		try {
 			//API Fetch
-			console.log("id is " + _id);
-			const response = await fetch(
-				`${host}/api/notes/updatenotes/${_id}`,
-				{
-					method: "PATCH", // *GET, POST, PUT, DELETE, etc.
-					headers: {
-						"Content-Type": "application/json",
-						"auth-token":
-							"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1ZTlhNzUwNTY2NjZlNzg0ZTBkZDU4OCIsImlhdCI6MTcwOTgxMTUzNn0._x-Myu8ue70RqHSUDmAhzmOONzQW_SGAk9wSQxIPGD8",
-					},
-					body: JSON.stringify({ title, description, tag }),
-				}
-			);
-			console.log(_id);
+			// console.log("id is " + _id);
+			response = await fetch(`${host}/api/notes/updatenotes/${_id}`, {
+				method: "PATCH", // *GET, POST, PUT, DELETE, etc.
+				headers: {
+					"Content-Type": "application/json",
+					"auth-token": localStorage.getItem("token"),
+				},
+				body: JSON.stringify({ title, description, tag }),
+			});
+			// console.log(_id);
 			const json = await response.json();
-			console.log(json);
+			// eslint-disable-next-line
+			// console.log(json);
 			//logic to edit the notes
 			let newNotes = JSON.parse(JSON.stringify(notes));
 			for (let index = 0; index < newNotes.length; index++) {
@@ -101,6 +98,7 @@ const Notestate = (props) => {
 			setNotes(newNotes);
 		} catch (error) {
 			console.error("Error updating note:", error);
+			console.error("Response status:", error.response?.status);
 		}
 	};
 	return (

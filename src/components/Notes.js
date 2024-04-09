@@ -2,15 +2,22 @@ import React, { useContext, useEffect, useRef, useState } from "react";
 import noteContext from "../context/notes/Notecontext";
 import Noteitem from "./Noteitem";
 import Addnote from "./Addnote";
+import { useNavigate } from "react-router-dom";
 // import Notestate from "../context/notes/Notestate";
 
 const Notes = () => {
 	const context = useContext(noteContext);
 	const { notes, getNotes, editNote } = context;
 	const [modalActive, setModalActive] = useState(false);
-
+	let navigate = useNavigate();
 	useEffect(() => {
-		getNotes();
+		if (localStorage.getItem("token")) {
+			// console.log(localStorage.getItem("token"));
+			getNotes();
+		} else {
+			navigate("/Login");
+		}
+
 		// eslint-disable-next-line
 	}, []);
 	const ref = useRef(null);
@@ -19,7 +26,7 @@ const Notes = () => {
 		_id: "",
 		etitle: "",
 		edescription: "",
-		etag: "default",
+		etag: "",
 	});
 
 	const updateNote = (currentNote) => {
@@ -72,7 +79,7 @@ const Notes = () => {
 		if (notes.etitle !== "") {
 			editNote(note._id, note.etitle, note.edescription, note.etag);
 			refClose.current.click();
-			console.log("Updating the note", note);
+			// console.log("Updating the note", note);
 		}
 	};
 
@@ -87,7 +94,7 @@ const Notes = () => {
 				ref={ref}
 				data-modal-target="authentication-modal"
 				data-modal-toggle="authentication-modal"
-				className=" hidden flex justify-items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+				className=" hidden  justify-items-center text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
 				type="button"
 			>
 				Toggle modal
@@ -153,6 +160,7 @@ const Notes = () => {
 											className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
 											placeholder="Your title here"
 											value={note.etitle}
+											minLength={3}
 											required
 										/>
 									</div>
@@ -170,6 +178,7 @@ const Notes = () => {
 											value={note.edescription}
 											placeholder="Description"
 											className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+											minLength={10}
 											required
 										/>
 									</div>
@@ -205,6 +214,11 @@ const Notes = () => {
 			</>
 
 			<h1 className="font-bold ">Your Notes</h1>
+			{notes.length === 0 && (
+				<p className=" font-extrabold text-md p-4">
+					No notes to display
+				</p>
+			)}
 			<div className="grid grid-cols-2 sm:grid-cols-3 gap-4 align-items-center align-self-center  p-2">
 				{notes.map((note) => {
 					return (

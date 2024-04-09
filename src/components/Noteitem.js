@@ -10,7 +10,7 @@ const Noteitem = (props) => {
 			{/* Added mb-4 for margin bottom */}
 			<div className="sm:max-h-auto max-h-80 max-w-80 h-auto w-72 hover:max-w-96  sm:w-full sm:h-64  bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800 dark:border-gray-700 whitespace-normal  truncate">
 				<div className="hover:cursor-pointer">
-					<h5 className="  mb-2 px-4 pt-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white ">
+					<h5 className="  mb-2 px-4 pt-4 text-2xl font-bold tracking-tight text-gray-900 dark:text-white truncate">
 						{note.title}
 					</h5>
 				</div>

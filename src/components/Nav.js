@@ -1,12 +1,17 @@
 import React, { useEffect } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Nav = () => {
 	let location = useLocation();
+	let navigate = useNavigate();
 	useEffect(() => {
 		// console.log(location.pathname);
 		// eslint-disable-next-line
 	}, [location]);
+	const handleLogout = () => {
+		localStorage.removeItem("token");
+		navigate("/login");
+	};
 	return (
 		<>
 			<nav className="bg-grey-800 border-black dark:bg-gray-900">
@@ -75,7 +80,6 @@ const Nav = () => {
 									About
 								</Link>
 							</li>
-
 							<li>
 								<Link
 									to="/Contact"
@@ -89,12 +93,22 @@ const Nav = () => {
 								</Link>
 							</li>
 							<li>
-								<Link
-									to="/Login"
-									className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent"
-								>
-									Login
-								</Link>
+								{localStorage.getItem("token") ? (
+									<button onClick={handleLogout}>
+										Logout
+									</button>
+								) : (
+									<Link
+										to="/Login"
+										className={`${
+											location.pathname === "/Login"
+												? "text-white font-bold"
+												: ""
+										}block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent md:border-0 md:hover:text-blue-700 md:p-0 dark:text-white md:dark:hover:text-blue-500 dark:hover:bg-gray-700 dark:hover:text-white md:dark:hover:bg-transparent`}
+									>
+										Login
+									</Link>
+								)}
 							</li>
 						</ul>
 					</div>
