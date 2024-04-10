@@ -16,9 +16,6 @@ function App() {
 					<Nav />
 					<div className=" text-center">
 						<Routes>
-							{/* Specify the default route as the Login component */}
-							<Route index element={<Login />} />
-							{/* Define the routes for other pages */}
 							<Route path="/home" element={<Home />} />
 							<Route path="/about" element={<About />} />
 							<Route path="/contact" element={<Contact />} />
