@@ -19,7 +19,7 @@ const Nav = () => {
 	};
 	return (
 		<>
-			<nav className="bg-grey-800 border-black dark:bg-gray-900">
+			<nav className="bg-grey-800 border-black dark:bg-gray-900 absolute w-full z-50">
 				<div className="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4 bg-lime-400 border rounded-lg">
 					<Link
 						to="/Home"
