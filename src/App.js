@@ -19,6 +19,11 @@ function App() {
 							<Route
 								exact
 								path="/about"
+								element={<Home />}
+							></Route>
+							<Route
+								exact
+								path="/about"
 								element={<About />}
 							></Route>
 							<Route
