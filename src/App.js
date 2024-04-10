@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Notestate from "./context/notes/Notestate";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+
 function App() {
 	return (
 		<>
@@ -15,32 +16,14 @@ function App() {
 					<Nav />
 					<div className=" text-center">
 						<Routes>
-							<Route index element={<Signup />}></Route>
-							<Route
-								exact
-								path="/about"
-								element={<Home />}
-							></Route>
-							<Route
-								exact
-								path="/about"
-								element={<About />}
-							></Route>
-							<Route
-								exact
-								path="/Contact"
-								element={<Contact />}
-							></Route>
-							<Route
-								exact
-								path="/Login"
-								element={<Login />}
-							></Route>
-							<Route
-								exact
-								path="/Signup"
-								element={<Signup />}
-							></Route>
+							{/* Specify the default route as the Login component */}
+							<Route index element={<Login />} />
+							{/* Define the routes for other pages */}
+							<Route path="/home" element={<Home />} />
+							<Route path="/about" element={<About />} />
+							<Route path="/contact" element={<Contact />} />
+							<Route path="/login" element={<Login />} />
+							<Route path="/signup" element={<Signup />} />
 						</Routes>
 					</div>
 				</Router>
