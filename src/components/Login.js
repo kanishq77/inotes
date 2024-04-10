@@ -1,6 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-require("dotenv").config();
+// require("dotenv").config();
 
 const Login = () => {
 	const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -11,7 +11,7 @@ const Login = () => {
 	const refClose = useRef(null);
 
 	let navigate = useNavigate();
-	const host = process.env.HOST;
+	const host = "https://backend-ruzy.onrender.com";
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {

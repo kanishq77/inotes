@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import noteContext from "./Notecontext";
-require("dotenv").config();
+// require("dotenv").config();
 // import Addnote from "../../components/Addnote";
 const Notestate = (props) => {
-	const host = process.env.HOST;
+	const host = "https://backend-ruzy.onrender.com";
 	const notesinitial = [];
 	const [notes, setNotes] = useState(notesinitial);
 
