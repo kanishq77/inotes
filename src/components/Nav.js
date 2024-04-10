@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { Link, useNavigate, useLocation } from "react-router-dom";
 
 const Nav = () => {
@@ -11,6 +11,11 @@ const Nav = () => {
 	const handleLogout = () => {
 		localStorage.removeItem("token");
 		navigate("/login");
+	};
+	const [isNavbarOpen, setIsNavbarOpen] = useState(false);
+
+	const toggleNavbar = () => {
+		setIsNavbarOpen(!isNavbarOpen);
 	};
 	return (
 		<>
@@ -31,7 +36,8 @@ const Nav = () => {
 						type="button"
 						className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
 						aria-controls="navbar-default"
-						aria-expanded="false"
+						onClick={toggleNavbar}
+						aria-expanded={isNavbarOpen ? "true" : "false"}
 					>
 						<span className="sr-only">Open main menu</span>
 						<svg
