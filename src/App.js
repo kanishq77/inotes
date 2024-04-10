@@ -16,6 +16,7 @@ function App() {
 					<Nav />
 					<div className=" text-center">
 						<Routes>
+							<Route index element={<Login />} />
 							<Route path="/Home" element={<Home />} />
 							<Route path="/About" element={<About />} />
 							<Route path="/Contact" element={<Contact />} />
