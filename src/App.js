@@ -7,6 +7,7 @@ import Contact from "./components/Contact";
 import Notestate from "./context/notes/Notestate";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import Noteitem from "./components/Noteitem";
 
 function App() {
 	return (

@@ -14,10 +14,10 @@ const Noteitem = (props) => {
 						{note.title}
 					</h5>
 				</div>
-				<p className="px-4 pb-4 h-1/2 font-normal text-gray-700 dark:text-gray-400 whitespace-normal truncate">
+				<p className="px-4 pb-4 h-1/2 sm:pb-2 font-normal text-gray-700 dark:text-gray-400 whitespace-normal truncate">
 					{note.description}
 				</p>
-				<div className="flex justify-evenly px-7 pb-4 pt-4 ">
+				<div className="flex justify-evenly px-7 pb-2 pt-3 ">
 					<span
 						className="hover:cursor-pointer border h-7 w-10 hover:w-14  border-green-500 bg-green-300 rounded-lg"
 						onClick={() => {
