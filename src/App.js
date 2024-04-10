@@ -15,7 +15,7 @@ function App() {
 			<Notestate>
 				<Router>
 					<Nav />
-					<div className=" pt-16 text-center">
+					<div className=" pt-20 text-center">
 						<Routes>
 							<Route index element={<Login />} />
 							<Route path="/Home" element={<Home />} />
