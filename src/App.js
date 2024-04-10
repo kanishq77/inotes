@@ -16,11 +16,11 @@ function App() {
 					<Nav />
 					<div className=" text-center">
 						<Routes>
-							<Route path="/home" element={<Home />} />
-							<Route path="/about" element={<About />} />
-							<Route path="/contact" element={<Contact />} />
-							<Route path="/login" element={<Login />} />
-							<Route path="/signup" element={<Signup />} />
+							<Route path="/Home" element={<Home />} />
+							<Route path="/About" element={<About />} />
+							<Route path="/Contact" element={<Contact />} />
+							<Route path="/Login" element={<Login />} />
+							<Route path="/Signup" element={<Signup />} />
 						</Routes>
 					</div>
 				</Router>
