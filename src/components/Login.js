@@ -1,5 +1,6 @@
 import React, { useRef, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+require("dotenv").config();
 
 const Login = () => {
 	const [credentials, setCredentials] = useState({ email: "", password: "" });
@@ -10,7 +11,7 @@ const Login = () => {
 	const refClose = useRef(null);
 
 	let navigate = useNavigate();
-	const host = "http://localhost:5000";
+	const host = process.env.HOST;
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		try {

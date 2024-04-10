@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
-
+require("dotenv").config();
 const Signup = () => {
 	const [showPassword, setShowPassword] = useState(false);
 	const [credentials, setCredentials] = useState({
@@ -9,7 +9,7 @@ const Signup = () => {
 		password: "",
 	});
 	let navigate = useNavigate();
-	const host = "http://localhost:5000";
+	const host = process.env.HOST;
 	const handleSubmit = async (e) => {
 		e.preventDefault();
 		const response = await fetch(`${host}/api/auth/createuser`, {

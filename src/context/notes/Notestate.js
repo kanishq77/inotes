@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import noteContext from "./Notecontext";
+require("dotenv").config();
 // import Addnote from "../../components/Addnote";
 const Notestate = (props) => {
-	const host = "http://localhost:5000";
+	const host = process.env.HOST;
 	const notesinitial = [];
 	const [notes, setNotes] = useState(notesinitial);
 
