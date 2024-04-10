@@ -15,7 +15,7 @@ function App() {
 					<Nav />
 					<div className=" text-center">
 						<Routes>
-							<Route index element={<Home />}></Route>
+							{/* <Route index element={<Home />}></Route> */}
 							<Route
 								exact
 								path="/about"
