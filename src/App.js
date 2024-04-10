@@ -15,15 +15,11 @@ function App() {
 					<Nav />
 					<div className=" text-center">
 						<Routes>
+							<Route index element={<Home />}></Route>
 							<Route
 								exact
 								path="/about"
 								element={<About />}
-							></Route>
-							<Route
-								exact
-								path="/Home"
-								element={<Home />}
 							></Route>
 							<Route
 								exact
