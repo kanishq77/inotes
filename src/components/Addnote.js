@@ -24,7 +24,7 @@ const Addnote = () => {
 
 	return (
 		<>
-			<div>
+			<div className=" p-10">
 				<h1 className="font-bold p-4">Add Notes</h1>
 				<form className="max-w-sm mx-auto">
 					<div className="mb-5">

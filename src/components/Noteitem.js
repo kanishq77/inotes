@@ -14,7 +14,7 @@ const Noteitem = (props) => {
 						{note.title}
 					</h5>
 				</div>
-				<p className="px-4 pb-4 h-1/2 sm:pb-2 font-normal text-gray-700 dark:text-gray-400 whitespace-normal truncate">
+				<p className="px-4 pb-4 h-2/5 sm:pb-2 font-normal text-gray-700 dark:text-gray-400 whitespace-normal truncate">
 					{note.description}
 				</p>
 				<div className="flex justify-evenly px-7 pb-2 pt-3 ">
