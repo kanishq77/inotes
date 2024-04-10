@@ -53,7 +53,7 @@ const Signup = () => {
 	};
 	return (
 		<>
-			<div>
+			<div className="">
 				<form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
 					{error && (
 						<div

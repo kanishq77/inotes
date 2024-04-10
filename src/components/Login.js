@@ -56,7 +56,7 @@ const Login = () => {
 
 	return (
 		<>
-			<div className="">
+			<div className=" ">
 				<form className="max-w-sm mx-auto" onSubmit={handleSubmit}>
 					{error && (
 						<div

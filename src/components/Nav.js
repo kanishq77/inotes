@@ -19,7 +19,7 @@ const Nav = () => {
 	};
 	return (
 		<>
-			<nav className="bg-grey-800 border-black dark:bg-gray-900 absolute w-full z-50">
+			<nav className="bg-grey-800 border-black dark:bg-gray-900 fixed top-0 w-full z-50">
 				<div className="max-w-screen flex flex-wrap items-center justify-between mx-auto p-4 bg-lime-400 border rounded-lg">
 					<Link
 						to="/Home"
@@ -62,7 +62,7 @@ const Nav = () => {
 						} w-full md:block md:w-auto`}
 						id="navbar-default"
 					>
-						<ul className="font-medium flex flex-col p-4 md:p-0 mt-4  bg-lime-400 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-lime-400 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
+						<ul className="font-medium flex flex-col p-4 md:p-0 mt-4 bg-lime-400 md:flex-row md:space-x-8 rtl:space-x-reverse md:mt-0 md:border-0 md:bg-lime-400 dark:bg-gray-800 md:dark:bg-gray-900 dark:border-gray-700">
 							<li>
 								<Link
 									to="/Home"
